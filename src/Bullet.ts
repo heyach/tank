@@ -25,6 +25,7 @@ class Bullet extends BasicElement{
     speed: number;
     fps: number;
     status: number;
+    directionImage: { up: string; right: string; down: string; left: string; };
     constructor(option) {
         super(option)
         this.sx = option.sx
@@ -39,7 +40,13 @@ class Bullet extends BasicElement{
         this.direction = option.direction // 直接初始化传入即可，不再更新，子弹不拐弯
         this.type = "Bullet";
         this.image = new Image();
-        this.image.src = `./bullet${this.direction}.png`;
+        this.directionImage = {
+            "up": "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1cf340800f0e476f8a49c601f77ee3ca~tplv-k3u1fbpfcp-watermark.image?",
+            "right": "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70c72db3e5fe4c7fb5102723aaac7fc5~tplv-k3u1fbpfcp-watermark.image?",
+            "down": "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/32d4613039964a069e302307b64c46e0~tplv-k3u1fbpfcp-watermark.image?",
+            "left": "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00aa9225712c45979c4ef85913b0f305~tplv-k3u1fbpfcp-watermark.image?",
+        }
+        this.image.src = this.directionImage[this.direction];
 
         this.speed = 10 // 根据这个speed和fps算出dx和dy,
         this.fps = 16

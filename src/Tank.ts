@@ -15,6 +15,7 @@ export default class Tank extends BasicElement {
     type: string;
     speed: number;
     bullet: Bullet;
+    directionImage: { up: string; right: string; down: string; left: string; };
     constructor(option) {
         super({});
         this.x = option.x;
@@ -23,14 +24,20 @@ export default class Tank extends BasicElement {
         this.h = option.h;
         this.type = "Tank"
         this.direction = "up";
+        this.directionImage = {
+            "up": "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bca9c499b8174b65b39c462b5cd9139e~tplv-k3u1fbpfcp-watermark.image?",
+            "right": "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2d5bd37c406a4ae3932389acb5d486fa~tplv-k3u1fbpfcp-watermark.image?",
+            "down": "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b942170125284efe9789d89e5c0df736~tplv-k3u1fbpfcp-watermark.image?",
+            "left": "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0af07850e9464e9c931e62167bc61547~tplv-k3u1fbpfcp-watermark.image?",
+        }
         this.image = new Image();
-        this.image.src = "./tankup.png";
+        this.image.src = this.directionImage[this.direction]
         this.parent = null
         this.speed = 10
         this.bullet = null
     }
     draw(ctx) {
-        this.image.src = `./tank${this.direction}.png`;
+        this.image.src = this.directionImage[this.direction]
         ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
 

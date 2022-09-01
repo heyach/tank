@@ -48,30 +48,29 @@ document.getElementById("btn-begin").addEventListener("click", () => {
         t.action()
         s2.add(t)
     })
+    document.addEventListener("keyup", (e) => {
+        switch(e.code) {
+            case "ArrowUp":
+                tank.setDirection("up")
+                tank.move()
+                break
+            case "ArrowRight": 
+                tank.setDirection("right")
+                tank.move()
+                break
+            case "ArrowDown": 
+                tank.setDirection("down")
+                tank.move()
+                break
+            case "ArrowLeft": 
+                tank.setDirection("left")
+                tank.move()
+                break
+            case "Space":
+                tank.fire()
+                break
+            default: 
+                break
+        }
+    })
 }) 
-
-document.addEventListener("keyup", (e) => {
-    switch(e.code) {
-        case "ArrowUp":
-            tank.setDirection("up")
-            tank.move()
-            break
-        case "ArrowRight": 
-            tank.setDirection("right")
-            tank.move()
-            break
-        case "ArrowDown": 
-            tank.setDirection("down")
-            tank.move()
-            break
-        case "ArrowLeft": 
-            tank.setDirection("left")
-            tank.move()
-            break
-        case "Space":
-            tank.fire()
-            break
-        default: 
-            break
-    }
-})

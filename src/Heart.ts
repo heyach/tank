@@ -15,7 +15,7 @@ export default class Heart extends BasicElement{
         this.h = option.h
         this.type = "Heart"
         this.image = new Image()
-        this.image.src = "./heart.png"
+        this.image.src = "https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f68715959d4e4576813677bc2a96ae68~tplv-k3u1fbpfcp-watermark.image?"
     }
 
     draw(ctx) {

@@ -17,6 +17,7 @@ export default class EnemyTank extends BasicElement {
     actionTimer: any;
     moveTimer: any;
     bullet: EnemyBullet;
+    directionImage: { up: string; right: string; down: string; left: string; };
     constructor(option) {
         super({});
         this.x = option.x;
@@ -24,9 +25,15 @@ export default class EnemyTank extends BasicElement {
         this.w = option.w;
         this.h = option.h;
         this.type = "EnemyTank"
-        this.direction = "left";
+        this.direction = "down";
+        this.directionImage = {
+            "up": "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0e5a75625244b448aa1c55685600ede~tplv-k3u1fbpfcp-watermark.image?",
+            "right": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9d1730fe64e54f7b95827c5ec5670616~tplv-k3u1fbpfcp-watermark.image?",
+            "down": "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0a6ec18d23fd437f880b150d09bef42d~tplv-k3u1fbpfcp-watermark.image?",
+            "left": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7e99ded7a1e3496cb46671dd1a35f6ad~tplv-k3u1fbpfcp-watermark.image?",
+        }
         this.image = new Image();
-        this.image.src = "./enemytankup.png";
+        this.image.src = this.directionImage[this.direction]
         this.parent = null
         this.speed = 10
         this.actionTimer = null
@@ -34,7 +41,7 @@ export default class EnemyTank extends BasicElement {
         this.bullet = null
     }
     draw(ctx) {
-        this.image.src = `./enemytank${this.direction}.png`;
+        this.image.src = this.directionImage[this.direction]
         ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
 
