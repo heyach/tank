@@ -1,4 +1,4 @@
-export default function getElementPoints(element) {
+export default function getElementPoints(element: {x: number, y: number, w: number, h: number}) {
     let t = [];
     t.push({
         x: element.x,

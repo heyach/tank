@@ -1,6 +1,5 @@
 import getAxes from "./getAxes";
 import getProjection from "./getProjection";
-import Polygon from "./Polygon";
 
 export default function isCollision(poly, poly2) {
     let axes1 = getAxes(poly.points);

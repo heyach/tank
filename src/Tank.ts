@@ -8,8 +8,8 @@ import CheckCollision from "./CheckCollision";
 import Timer from "./Timer";
 
 export default class Tank extends BasicElement {
-    w: any;
-    h: any;
+    w: number;
+    h: number;
     direction: string;
     image: HTMLImageElement;
     type: string;
@@ -36,17 +36,17 @@ export default class Tank extends BasicElement {
         this.speed = 10
         this.bullet = null
     }
-    draw(ctx) {
+    draw(ctx: CanvasRenderingContext2D) {
         this.image.src = this.directionImage[this.direction]
         ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
 
-    pointInElement(x, y) {
+    pointInElement(x: number, y: number) {
         // 假设内置close大小为20*20，在元素右上角
         // 这个判断还是要加上offset，更新后，子元素的xy就是container的xy
         return this.x <= x && this.y <= y && this.x + this.w >= x && this.y + this.h >= y;
     }
-    setDirection(d) {
+    setDirection(d: string) {
         this.direction = d;
     }
     destroy() {

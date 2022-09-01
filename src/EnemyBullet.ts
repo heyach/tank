@@ -8,10 +8,10 @@ import isCollision from "./isCollision";
 import Timer from "./Timer";
 
 class Bullet extends BasicElement{
-    sx: any
-    sy: any
-    ex: any;
-    ey: any;
+    sx: number
+    sy: number
+    ex: number;
+    ey: number;
     w: number;
     h: number;
     type: string;
@@ -20,8 +20,8 @@ class Bullet extends BasicElement{
     y: number;
     dx: number
     dy: number
-    timer: any;
-    direction: any
+    timer: Timer;
+    direction: string
     fps: number;
     speed: number;
     status: number;
@@ -54,7 +54,7 @@ class Bullet extends BasicElement{
         // 初始化就发射出去
         this.fire()
     }
-    draw(ctx) {
+    draw(ctx: CanvasRenderingContext2D) {
         ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
     destroy() {

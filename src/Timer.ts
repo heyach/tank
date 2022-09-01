@@ -1,8 +1,8 @@
 class Timer {
-    interval: any
-    fn: any
+    interval: number
+    fn: Function
     lastTime: number
-    timer: any
+    timer: number
     constructor(fn, interval) {
         this.interval = interval
         this.fn = fn

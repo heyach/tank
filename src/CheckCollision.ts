@@ -1,7 +1,7 @@
 import getElementPoints from "./getElementPoints"
 import isCollision from "./isCollision"
 
-export default function CheckCollision(elms, elm, type, cb) {
+export default function CheckCollision(elms: any[], elm, type: Array<string>, cb: Function) {
     // 更新优化，碰撞检测消耗很大，这里不用和所有的元素检测，根据elm的范围获取一定范围就行了
     // 这个优化没办法通用，必须根据具体应用去做，比如我们这里，单元格是60，子弹是最大占位是20，那么以子弹为中心，100px外的元素显然是不可能发生碰撞的
     // 比如2个坦克的碰撞，t2.x一定要大于t1.x - 60 不满足这个条件，是不可能碰撞的，都不用检测
