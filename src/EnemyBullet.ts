@@ -26,6 +26,7 @@ class Bullet extends BasicElement{
     speed: number;
     status: number;
     directionImage: { up: string; right: string; down: string; left: string; };
+    hurt: any;
     constructor(option) {
         super(option)
         this.sx = option.sx
@@ -37,6 +38,7 @@ class Bullet extends BasicElement{
         this.status = 1
         this.w = option.w;
         this.h = option.h;
+        this.hurt = option.hurt || 1
         this.direction = option.direction // 直接初始化传入即可，不再更新，子弹不拐弯
         this.type = "EnemyBullet";
         this.directionImage = {
@@ -88,7 +90,7 @@ class Bullet extends BasicElement{
             // 子弹需要考虑碰撞，有子弹对敌方坦克的，也有敌方子弹对我们坦克的，还有子弹对墙体的，墙体还要分类型，子弹还要分等级和类型，这里简化一点，任何东西和子弹对上了，就挂了
             let elms = flatArrayChildren(this.parent.children);
             let p = CheckCollision(elms, this, ["Brick", "Tank", "Heart"], (elm) => {
-                elm.gotShot()
+                elm.gotShot(this.hurt)
                 this.destroy()
             })
             if(!p) {

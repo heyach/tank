@@ -55,8 +55,8 @@ export default class SeniorEnemyTank extends BasicElement {
     setDirection(d: string) {
         this.direction = d;
     }
-    gotShot() {
-        this.lifeCount--
+    gotShot(hurt) {
+        this.lifeCount -= hurt
         if(this.lifeCount <= 0) {
             this.destroy()
         }

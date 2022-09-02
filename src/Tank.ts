@@ -16,6 +16,7 @@ export default class Tank extends BasicElement {
     speed: number;
     bullet: Bullet;
     directionImage: { up: string; right: string; down: string; left: string; };
+    star: number;
     constructor(option) {
         super({});
         this.x = option.x;
@@ -34,6 +35,7 @@ export default class Tank extends BasicElement {
         this.image.src = this.directionImage[this.direction]
         this.parent = null
         this.speed = 10
+        this.star = 0
         this.bullet = null
     }
     draw(ctx: CanvasRenderingContext2D) {
@@ -67,6 +69,10 @@ export default class Tank extends BasicElement {
                 CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y += this.speed
                 })
+                // 单独加上吃道具逻辑，后续可以扩展
+                CheckCollision(elms, this, ["Star"], (elm) => {
+                    elm.eat(this)
+                })
                 break;
             case "right":
                 if (this.x < config.stage.w - config.tank.w) {
@@ -75,6 +81,10 @@ export default class Tank extends BasicElement {
                 elms = flatArrayChildren(this.parent.children);
                 CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x -= this.speed
+                })   
+                // 单独加上吃道具逻辑，后续可以扩展
+                CheckCollision(elms, this, ["Star"], (elm) => {
+                    elm.eat(this)
                 })
                 break;
             case "down":
@@ -84,6 +94,10 @@ export default class Tank extends BasicElement {
                 elms = flatArrayChildren(this.parent.children);
                 CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y -= this.speed
+                })     
+                // 单独加上吃道具逻辑，后续可以扩展
+                CheckCollision(elms, this, ["Star"], (elm) => {
+                    elm.eat(this)
                 })
                 break;
             case "left":
@@ -93,6 +107,10 @@ export default class Tank extends BasicElement {
                 elms = flatArrayChildren(this.parent.children);
                 CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x += this.speed
+                })
+                // 单独加上吃道具逻辑，后续可以扩展
+                CheckCollision(elms, this, ["Star"], (elm) => {
+                    elm.eat(this)
                 })
                 break;
         }
@@ -111,7 +129,8 @@ export default class Tank extends BasicElement {
                     ey: -config.bullet.h,
                     w: config.bullet.w,
                     h: config.bullet.h,
-                    direction: "up"
+                    direction: "up",
+                    hurt: this.star + 1
                 }
                 break
             case "right":
@@ -122,7 +141,8 @@ export default class Tank extends BasicElement {
                     ey: this.y + this.h / 2 - config.bullet.w / 2,
                     w: config.bullet.h,
                     h: config.bullet.w,
-                    direction: "right"
+                    direction: "right",
+                    hurt: this.star + 1
                 }
                 break
             case "down":
@@ -133,7 +153,8 @@ export default class Tank extends BasicElement {
                     ey: config.stage.h + config.bullet.h,
                     w: config.bullet.w,
                     h: config.bullet.h,
-                    direction: "down"
+                    direction: "down",
+                    hurt: this.star + 1
                 }
                 break
             case "left":
@@ -144,7 +165,8 @@ export default class Tank extends BasicElement {
                     ey: this.y + this.h / 2 - config.bullet.w / 2,
                     w: config.bullet.h,
                     h: config.bullet.w,
-                    direction: "left"
+                    direction: "left",
+                    hurt: this.star + 1
                 }
                 break
             default: 

@@ -8,6 +8,7 @@ import Timer from "./Timer";
 import SteelBrick from "./SteelBrick";
 import WaterBrick from "./WaterBrick";
 import SeniorEnemyTank from "./SeniorEnemyTank";
+import Star from "./Star";
 
 // 初始化一个800 * 700的舞台
 let s2 = new Stage(document.getElementById("stage"));
@@ -73,13 +74,20 @@ document.getElementById("btn-begin").addEventListener("click", () => {
     //     t.action()
     //     s2.add(t)
     // })
-    // let set = new SeniorEnemyTank({
-    //     x: 720,
-    //     y: 720,
-    //     w: 60,
-    //     h: 60
-    // })
-    // s2.add(set)
+    let set = new SeniorEnemyTank({
+        x: 720,
+        y: 720,
+        w: 60,
+        h: 60
+    })
+    s2.add(set)
+    let set2 = new SeniorEnemyTank({
+        x: 720,
+        y: 660,
+        w: 60,
+        h: 60
+    })
+    s2.add(set2)
     
     // let set2 = new EnemyTank({
     //     x: 720,
@@ -88,6 +96,13 @@ document.getElementById("btn-begin").addEventListener("click", () => {
     //     h: 60
     // })
     // s2.add(set2)
+    let star = new Star({
+        x: 480,
+        y: 500,
+        w: 30,
+        h: 30
+    })
+    s2.add(star)
     document.addEventListener("keyup", (e) => {
         switch(e.code) {
             case "ArrowUp":

@@ -26,6 +26,7 @@ class Bullet extends BasicElement{
     fps: number;
     status: number;
     directionImage: { up: string; right: string; down: string; left: string; };
+    hurt: any;
     constructor(option) {
         super(option)
         this.sx = option.sx
@@ -37,6 +38,7 @@ class Bullet extends BasicElement{
         this.w = option.w;
         this.h = option.h;
         this.status = 1
+        this.hurt = option.hurt || 1
         this.direction = option.direction // 直接初始化传入即可，不再更新，子弹不拐弯
         this.type = "Bullet";
         this.image = new Image();
@@ -90,7 +92,7 @@ class Bullet extends BasicElement{
             let elms = flatArrayChildren(this.parent.children);
             let p = CheckCollision(elms, this, ["SteelBrick", "Brick", "EnemyTank", "Heart", "SeniorEnemyTank"], (elm) => {
                 this.destroy()
-                elm.gotShot()
+                elm.gotShot(this.hurt)
             })
             if(!p) {
                 this.x += this.ex - this.sx != 0 ? Math.sign(this.ex - this.sx) * this.speed : 0
