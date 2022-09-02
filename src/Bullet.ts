@@ -58,6 +58,7 @@ class Bullet extends BasicElement{
     }
     destroy() {
         this.status = 0
+        this.timer.clear()
         this.parent.remove(this)
     }
     fire() {
@@ -87,10 +88,9 @@ class Bullet extends BasicElement{
             
             // 子弹需要考虑碰撞，有子弹对敌方坦克的，也有敌方子弹对我们坦克的，还有子弹对墙体的，墙体还要分类型，子弹还要分等级和类型，这里简化一点，任何东西和子弹对上了，就挂了
             let elms = flatArrayChildren(this.parent.children);
-            let p = CheckCollision(elms, this, ["Brick", "EnemyTank", "Heart"], (elm) => {
-                elm.destroy()
+            let p = CheckCollision(elms, this, ["SteelBrick", "Brick", "EnemyTank", "Heart", "SeniorEnemyTank"], (elm) => {
                 this.destroy()
-                this.timer.clear()
+                elm.gotShot()
             })
             if(!p) {
                 this.x += this.ex - this.sx != 0 ? Math.sign(this.ex - this.sx) * this.speed : 0
@@ -98,7 +98,6 @@ class Bullet extends BasicElement{
             } 
             if(this.x < -10 || this.x > 1210 || this.y < -10 || this.y > 810) {
                 this.destroy()
-                this.timer.clear()
             }
         }, this.fps)
     }

@@ -22,6 +22,10 @@ export default class Brick extends BasicElement{
         ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
     
+    gotShot() {
+        this.destroy()
+    }
+
     destroy() {
         this.parent.remove(this)
     }

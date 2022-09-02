@@ -49,6 +49,9 @@ export default class Tank extends BasicElement {
     setDirection(d: string) {
         this.direction = d;
     }
+    gotShot() {
+        this.destroy()
+    }
     destroy() {
         this.parent.remove(this)
     }
@@ -61,7 +64,7 @@ export default class Tank extends BasicElement {
                     this.y -= this.speed;
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "EnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y += this.speed
                 })
                 break;
@@ -70,7 +73,7 @@ export default class Tank extends BasicElement {
                     this.x += this.speed;
                 } 
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "EnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x -= this.speed
                 })
                 break;
@@ -79,7 +82,7 @@ export default class Tank extends BasicElement {
                     this.y += this.speed;
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "EnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y -= this.speed
                 })
                 break;
@@ -88,7 +91,7 @@ export default class Tank extends BasicElement {
                     this.x -= this.speed;
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "EnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x += this.speed
                 })
                 break;

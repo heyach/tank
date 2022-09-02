@@ -7,7 +7,7 @@ import Timer from "./Timer";
 import EnemyBullet from "./EnemyBullet";
 import CheckCollision from "./CheckCollision";
 
-export default class EnemyTank extends BasicElement {
+export default class SeniorEnemyTank extends BasicElement {
     w: number;
     h: number;
     direction: string;
@@ -18,20 +18,22 @@ export default class EnemyTank extends BasicElement {
     moveTimer: Timer;
     bullet: EnemyBullet;
     directionImage: { up: string; right: string; down: string; left: string; };
+    lifeCount: number;
     constructor(option) {
         super({});
         this.x = option.x;
         this.y = option.y;
         this.w = option.w;
         this.h = option.h;
-        this.type = "EnemyTank"
+        this.type = "SeniorEnemyTank"
         this.direction = "down";
         this.directionImage = {
-            "up": "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b0e5a75625244b448aa1c55685600ede~tplv-k3u1fbpfcp-watermark.image?",
-            "right": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9d1730fe64e54f7b95827c5ec5670616~tplv-k3u1fbpfcp-watermark.image?",
-            "down": "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0a6ec18d23fd437f880b150d09bef42d~tplv-k3u1fbpfcp-watermark.image?",
-            "left": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7e99ded7a1e3496cb46671dd1a35f6ad~tplv-k3u1fbpfcp-watermark.image?",
+            "up": "./enemyredtankleft.png",
+            "right": "./enemyredtankright.png",
+            "down": "./enemyredtankdown.png",
+            "left": "./enemyredtankleft.png",
         }
+        this.lifeCount = 4
         this.image = new Image();
         this.image.src = this.directionImage[this.direction]
         this.parent = null
@@ -54,7 +56,10 @@ export default class EnemyTank extends BasicElement {
         this.direction = d;
     }
     gotShot() {
-        this.destroy()
+        this.lifeCount--
+        if(this.lifeCount <= 0) {
+            this.destroy()
+        }
     }
     destroy() {
         this.actionTimer && this.actionTimer.clear()
@@ -83,7 +88,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank"], (elm) => {
                     this.y += this.speed
                     // 碰到墙了就随机换方向
                     this.randomDirection()
@@ -96,7 +101,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank"], (elm) => {
                     this.x -= this.speed
                     this.randomDirection()
                 })
@@ -108,7 +113,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank"], (elm) => {
                     this.y -= this.speed
                     this.randomDirection()
                 })
@@ -120,7 +125,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank"], (elm) => {
                     this.x += this.speed
                     this.randomDirection()
                 })
