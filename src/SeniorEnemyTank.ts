@@ -28,10 +28,10 @@ export default class SeniorEnemyTank extends BasicElement {
         this.type = "SeniorEnemyTank"
         this.direction = "down";
         this.directionImage = {
-            "up": "./enemyredtankleft.png",
-            "right": "./enemyredtankright.png",
-            "down": "./enemyredtankdown.png",
-            "left": "./enemyredtankleft.png",
+            "up": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51aba0e4e8b34e779c4756afe4893b63~tplv-k3u1fbpfcp-watermark.image?",
+            "right": "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05551f12df3a45ef8507fddd509a24e1~tplv-k3u1fbpfcp-watermark.image?",
+            "down": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70eb1fad055c46758d258e2d178ca6e1~tplv-k3u1fbpfcp-watermark.image?",
+            "left": "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e56d3c82e63f4dcc9ae1f3032058822a~tplv-k3u1fbpfcp-watermark.image?",
         }
         this.lifeCount = 4
         this.image = new Image();
@@ -69,10 +69,10 @@ export default class SeniorEnemyTank extends BasicElement {
     action() {
         this.actionTimer = new Timer(() => {
             this.fire()
-        }, 400)
+        }, 600)
         this.moveTimer = new Timer(() => {
             this.move()
-        }, 400)
+        }, 600)
     }
     randomDirection() {
         this.setDirection(['up', 'down', 'right', 'left'][Math.floor(Math.random() * 4)])

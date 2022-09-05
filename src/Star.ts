@@ -15,7 +15,7 @@ export default class Star extends BasicElement{
         this.h = option.h
         this.type = "Star"
         this.image = new Image()
-        this.image.src = "./daojuxingxing.png"
+        this.image.src = "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff55a350760744afbd08653ebdae1e1f~tplv-k3u1fbpfcp-watermark.image?"
     }
 
     draw(ctx: CanvasRenderingContext2D) {

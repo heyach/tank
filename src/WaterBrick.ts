@@ -15,7 +15,7 @@ export default class WaterBrick extends BasicElement {
         this.h = option.h
         this.type = "WaterBrick"
         this.image = new Image()
-        this.image.src = "./shuizhuan.png"
+        this.image.src = "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/235172dd563c40ceaff26677d1d9765a~tplv-k3u1fbpfcp-watermark.image?"
     }
 
     draw(ctx: CanvasRenderingContext2D) {

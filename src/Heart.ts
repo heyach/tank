@@ -28,7 +28,8 @@ export default class Heart extends BasicElement{
     destroy() {
         // 心脏都被摧毁了，直接GG
         this.parent.remove(this)
-        alert("GG")
+        alert("GG");
+        (<any>location).reload()
     }
 
     pointInElement(x: number, y: number) {

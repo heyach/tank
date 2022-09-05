@@ -64,10 +64,10 @@ export default class EnemyTank extends BasicElement {
     action() {
         this.actionTimer = new Timer(() => {
             this.fire()
-        }, 400)
+        }, 800)
         this.moveTimer = new Timer(() => {
             this.move()
-        }, 400)
+        }, 800)
     }
     randomDirection() {
         this.setDirection(['up', 'down', 'right', 'left'][Math.floor(Math.random() * 4)])

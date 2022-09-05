@@ -15,7 +15,7 @@ export default class SteelBrick extends BasicElement {
         this.h = option.h
         this.type = "SteelBrick"
         this.image = new Image()
-        this.image.src = "./tiezhuan.png"
+        this.image.src = "https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b1d344bb8024465288dddd59cf04c1fd~tplv-k3u1fbpfcp-watermark.image?"
     }
 
     draw(ctx: CanvasRenderingContext2D) {
