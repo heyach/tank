@@ -83,7 +83,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y += this.speed
                     // 碰到墙了就随机换方向
                     this.randomDirection()
@@ -96,7 +96,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x -= this.speed
                     this.randomDirection()
                 })
@@ -108,7 +108,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.y -= this.speed
                     this.randomDirection()
                 })
@@ -120,7 +120,7 @@ export default class EnemyTank extends BasicElement {
                     this.randomDirection()
                 }
                 elms = flatArrayChildren(this.parent.children);
-                CheckCollision(elms, this, ["Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
+                CheckCollision(elms, this, ["WaterBrick", "SteelBrick", "Brick", "Tank", "EnemyTank", "SeniorEnemyTank"], (elm) => {
                     this.x += this.speed
                     this.randomDirection()
                 })
